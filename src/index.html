@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js"></script>
+    <script src="https://unpkg.com/lodash@4.17.20"></script>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-entity-generator-component@^3.0.0/dist/aframe-entity-generator-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    <a-scene physics>
+        <!--<a-entity camera kinematic-body look-controls wasd-controls="acceleration:100">
+            <a-box position="0 0 -10" rotation="0 0 0" color="#4CC3D9" static-body></a-box>
+        </a-entity>-->
+
+        <!--Build our background and our floor-->
+        <a-plane static-body position="0 0 -4" rotation="-90 0 0" width="100" height="100" color="#ECECEC"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
+        
+        <!--Build one dynamic body - a soccer ball we can play with-->
+        <a-sphere id="ball" dynamic-body position="4 1.25 -5" radius="0.5" color="tomato" mass="1"></a-sphere>
+        
+        <a-assets id="mixin-assets">
+            <a-mixin class="shape" id="box" geometry="primitive: box" random-position="min: -70 -70 -70; max: 0 0 0" static-body ></a-mixin>
+            <a-mixin class="size" id="tall" geometry="height: 40"></a-mixin>
+            <a-mixin class="size" id="wide" geometry="width: 1"></a-mixin>
+            <a-mixin class="color" id="grey" material="color:#999DA0"></a-mixin>
+        </a-assets>
+        
+        <a-entity entity-generator="mixin: box tall grey; num:1000"></a-entity>
+
+
+        <a-entity class="player" id="player"
+                camera
+                acceleration="100"
+                jump-ability
+                universal-controls
+                kinematic-body
+                position="1 4 2"
+                geometry="primitive: sphere" color="#000000">
+                <a-triangle static-body color="#ccc" rotation="-90 0 0"  position="0 -0.5 -1"></a-triangle>
+                <!--<a-entity kinematic-body geometry="primitive: sphere" id="ball" position="0 1 -2" radius="0.5" color="tomato" mass="1"></a-entity>!-->
+        </a-entity>
+    </a-scene>
+</body>
+</html>
