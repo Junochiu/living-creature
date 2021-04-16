@@ -74,7 +74,7 @@ AFRAME.registerComponent(
             let camPos = this.cam.object3D.position
             let itemPos = this.el.object3D.position
             
-            distanceTo = (p1,p2)=>{
+            const distanceTo = (p1,p2)=>{
                 return (Math.sqrt(Math.abs((p1.x-p2.x)*(p1.x-p2.x)+(p1.z-p2.z)*(p1.z-p2.z))))
             }
             
