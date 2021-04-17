@@ -16,7 +16,10 @@
   },
   "dependencies": {
     "aframe-physics-system": "^4.0.1",
+    "express": "^4.17.1",
     "lodash": "^4.17.21",
+    "osc": "^2.4.1",
+    "serialport": "^9.0.7",
     "webpack": "^5.33.2"
   }
 }
