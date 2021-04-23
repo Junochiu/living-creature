@@ -1,5 +1,5 @@
 
-import _ from 'lodash'
+//import _ from 'lodash'
 var scene = document.querySelector('a-scene')
 var gamepad = navigator.getGamepads ? navigator.getGamepads() : ( navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : null )
 console.log(gamepad)
